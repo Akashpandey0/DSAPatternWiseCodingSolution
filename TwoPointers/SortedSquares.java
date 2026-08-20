@@ -13,8 +13,8 @@ public class SortedSquares {
         //         right--;                                                                //          |
         //     } else if(Math.abs(nums[left]) > Math.abs(nums[right])){                    //          |
         //         nums[left] = nums[left] * nums[left];                                   //          |
-        //         int temp = nums[right];                                                 //          |-------------> This solution is only for the case the array +ve and both half -ve and +ve array
-        //         nums[right] = nums[left];                                               //          |               So optimal will be down 👇
+        //         int temp = nums[right];                                                 //          |-------------> This solution is only work for the case when the arrays is +ve and both half -ve and +ve
+        //         nums[right] = nums[left];                                               //          |               So optimal approach is written down 👇
         //         nums[left] = temp;                                                      //          |
         //         nums[right] = nums[right] * nums[right];                                //          |
         //         right--;                                                                //          |
