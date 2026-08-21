@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 class TwoSum {
     public static void main(String[] args) {
-        int [] arr = {7,2,11,15};
+        int [] arr = {3,2,4};
 
         Arrays.sort(arr);
-        System.out.println(Arrays.toString(twoSum(arr, 9)));
+        System.out.println(Arrays.toString(twoSum(arr, 6)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -15,12 +15,10 @@ class TwoSum {
         int right = nums.length - 1;
 
         while(left < right) {
-            int [] sum = new int[2];
+            // int [] sum = new int[2]; using extra array is not necessary, we can directly return the pair
 
             if(nums[left] + nums[right] == target) {
-                sum[0] = nums[left];
-                sum[1] = nums[right];
-                return sum;
+                return new int[]{nums[left], nums[right]};
             } else if(nums[left] + nums[right] < target) {
                 left++;
             } else {
