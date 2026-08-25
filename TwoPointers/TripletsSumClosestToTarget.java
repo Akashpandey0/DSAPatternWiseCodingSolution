@@ -32,12 +32,14 @@ public class TripletsSumClosestToTarget {
                 }
                 else if(sum < target) {
                     left++;
+                    //Skip duplicate elements for left pointer
                     while(left < right && nums[left] == nums[left + 1]) {
                         left++;
                     }
                 }
                 else {
                     right--;
+                    //Skip duplicate elements for right pointer
                     while(left < right && nums[right] == nums[right - 1]) {
                         right--;
                     }
