@@ -6,9 +6,27 @@ public class MaxSumOfSubarraySizeK {
 
         int k = 2;
 
-        System.out.println(maxSum(num,k));
+        System.out.println("Brute force Approach: " + maxSumBruteForce(num, k));
+        System.out.println("Optimized Sliding Window Approach:" + maxSumOptimized(num,k));
     }
-    public static int maxSum(int [] num, int k) {
+
+    // Time Complexity: O(n*k)
+    public static int maxSumBruteForce(int [] num, int k) {
+        int n = num.length;
+        int maxSum = Integer.MIN_VALUE;
+        for(int i = 0; i <= n - k; i++) {
+            int windowSum = 0;
+            for(int j = i; j < i + k; j++) {
+                windowSum += num[j];
+            }
+            maxSum = Math.max(maxSum, windowSum);
+        }
+        return maxSum;
+    }
+
+
+    // Time Complexity: O(n)
+    public static int maxSumOptimized(int [] num, int k) {
         int maxSum = 0;
         int windowSum = 0;
 
