@@ -31,16 +31,44 @@
 - Subarray/substring of **fixed or variable size**
 - Finding max/min/longest/shortest contiguous block
 - "At most K distinct", "longest without repeating"
+- Flip at most K zeros, binary subarrays
 
-**Trigger keywords:** "subarray", "substring", "contiguous", "window", "at most K"
+**Trigger keywords:** "subarray", "substring", "contiguous", "window", "at most K", "consecutive 1s", "flip", "distinct characters"
+
+**Sub-patterns:**
+- **Fixed Window** → window size K is given, slide without shrinking
+- **Variable Window (expand/shrink)** → grow right, shrink left when condition breaks
+
+**Code Template (Variable Window):**
+```java
+int left = 0, maxLen = 0;
+Map<?, Integer> map = new HashMap<>(); // or int[] freq
+
+for (int right = 0; right < n; right++) {
+    // 1. Add nums[right] to window
+
+    // 2. Shrink from left while window is invalid
+    while (/* invalid condition */) {
+        // remove nums[left] from window
+        left++;
+    }
+
+    // 3. Update answer
+    maxLen = Math.max(maxLen, right - left + 1);
+}
+```
 
 **Classic Problems:**
-| Problem | Platform |
-|--------|----------|
-| Maximum Sum Subarray of Size K | GFG |
-| Longest Substring Without Repeating | LeetCode #3 |
-| Minimum Window Substring | LeetCode #76 |
-| Fruit Into Baskets | LeetCode #904 |
+| Problem | Platform | Type |
+|--------|----------|------|
+| Maximum Sum Subarray of Size K | GFG | Fixed |
+| Minimum Size Subarray Sum | LeetCode #209 | Variable |
+| Longest Substring Without Repeating Characters | LeetCode #3 | Variable |
+| Longest Substring with K Uniques | GFG | Variable |
+| Fruit Into Baskets | LeetCode #904 | Variable |
+| Max Consecutive Ones II (flip 1 zero) | LeetCode #487 | Variable |
+| Max Consecutive Ones III (flip K zeros) | LeetCode #1004 | Variable |
+| Longest Repeating Character Replacement | LeetCode #424 | Variable |
 
 ---
 
