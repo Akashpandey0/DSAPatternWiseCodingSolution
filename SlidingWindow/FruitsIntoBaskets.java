@@ -51,7 +51,7 @@ public class FruitsIntoBaskets {
                 if(map.get(fruits[left]) == 0) map.remove(fruits[left]);
                 left++;
             }
-            if(map.size() == atMost) {
+            if(map.size() <= atMost) {
                 maxLen = Math.max(maxLen, right - left + 1);
             }
         }
