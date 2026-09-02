@@ -33,37 +33,42 @@ public class LinkedListCycle2 {
         ListNode(int val) { this.val = val; }
         public String toString() { return "Node(" + val + ")"; }
     }
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         ListNode head1 = new ListNode(3);
         head1.next = new ListNode(2);
         head1.next.next = new ListNode(0);
         head1.next.next.next = new ListNode(-4);
         head1.next.next.next.next = head1.next;
-        System.out.println(detectCycle(head1));
+        System.out.println(printOutput(detectCycle(head1)));
 
         ListNode head2 = new ListNode(1);
         head2.next = new ListNode(2);
         head2.next.next = head2;
-        System.out.println(detectCycle(head2));
+        System.out.println(printOutput(detectCycle(head2)));
 
         ListNode head3 = new ListNode(1);
-        System.out.println(detectCycle(head3));
+        System.out.println(printOutput(detectCycle(head3)));
+    }
+
+    public static String printOutput(ListNode node) {
+        if (node == null) return "no cycle";
+        return "tail connects to node index " + (node.val - 1);
     }
 
     public static ListNode detectCycle(ListNode head) {
-        if(head == null || head.next == null) return null;
+        if (head == null || head.next == null) return null;
 
         ListNode slow = head;
         ListNode fast = head;
 
-        while(fast != null && fast.next != null) {
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
 
-            if(slow == fast) {
+            if (slow == fast) {
                 slow = head;
-                while(slow != fast) {
+                while (slow != fast) {
                     fast = fast.next;
                     slow = slow.next;
                 }
@@ -73,5 +78,4 @@ public class LinkedListCycle2 {
 
         return null;
     }
-
 }
